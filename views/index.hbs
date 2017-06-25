@@ -1,0 +1,29 @@
+<div align="center">
+<form class="form-inline" method="post" action="/create">
+    <div class="form-group">
+        <input type="url" class="form-control" id="url" name="url" placeholder="URL">
+    </div>
+    <div class="form-group">
+        <label>https://urlcutter.com/</label>
+        <input type="text" onkeyup="nospaces(this)" class="form-control" id="short_url" name="short_url" placeholder="Short url" >
+    </div>
+    </br>
+    </br>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+<script type="text/javascript">
+
+    function nospaces(t){
+
+        if(t.value.match(/\s/g)){
+
+            alert('Sorry, you are not allowed to enter any spaces');
+
+            t.value=t.value.replace(/\s/g,'');
+
+        }
+
+    }
+
+</script>
