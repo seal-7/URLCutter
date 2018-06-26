@@ -13,7 +13,7 @@ Note: Remember to start mongodb as a service.
     cd URLCutter
     npm install
     sudo npm start
-    Open http://localhost:3000 in your browser.
+    Open http://localhost in your browser.
      
 Here we need sudo as the server will be starting on port 80 which requires sudo privileges. Port can be changes in URLCutter/bin/www file.
 
