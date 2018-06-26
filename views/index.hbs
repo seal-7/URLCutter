@@ -16,9 +16,9 @@
 
     function nospaces(t){
 
-        if(t.value.match(/\s/g)){
+        if(/^[a-z0-9]+$/i.test(t.value)){
 
-            alert('Sorry, you are not allowed to enter any spaces');
+            alert('Sorry, only Aplha numeric characters are allowed');
 
             t.value=t.value.replace(/\s/g,'');
 
