@@ -16,11 +16,11 @@
 
     function nospaces(t){
 
-        if(/^[a-z0-9]+$/i.test(t.value)){
+        if(/[^a-zA-Z0-9]+/i.test(t.value)){
 
             alert('Sorry, only Aplha numeric characters are allowed');
 
-            t.value=t.value.replace(/\s/g,'');
+            t.value=t.value.replace(/[^a-zA-Z0-9]/g,'');
 
         }
 
