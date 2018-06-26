@@ -1,5 +1,6 @@
 # URL Cutter
 A URL shortening web service, which provides short aliases for redirection of long URLs.
+Try out the live running example http://52.15.233.98/
 
 ## How does it work?
 Short alias provided by the user is used as a key and the long url which needs to be shortned is used as value. This provides us with a hash map kind of database where we can query for the key and get the long urls and redirect user to it.
