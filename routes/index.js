@@ -8,10 +8,15 @@ router.get('/', function(req, res, next) {
 router.post('/create', function(req, res, next) {
     console.log(req.body.url);
     console.log(req.body.short_url);
+    let longUrl = req.body.url;
+    let shortUrl = req.body.short_url;
+    if (shortUrl == "") {
+      shortUrl = getRandomShortUrl();
+    }
 
     var req_data=new User({
-        url: req.body.url,
-        short_url : req.body.short_url,
+        url: longUrl,
+        short_url : shortUrl,
         date : new Date().toDateString()
     });
 
@@ -43,4 +48,18 @@ router.get('/:url',function (req, res, next) {
         }
     });
 })
+
+function getRandomShortUrl() {
+  let randomNumber = Math.round(Math.random() * 1000).toString();
+  let timeStamp = new Date().getTime().toString();
+  let randomUrl = ""
+  for(let i=0; i<timeStamp.length; i++) {
+    randomUrl += String.fromCharCode('a'.charCodeAt(0) + parseInt(timeStamp[i]));
+  }
+  for(let i=0; i<randomNumber.length; i++) {
+    randomUrl += String.fromCharCode('a'.charCodeAt(0) + parseInt(randomNumber[i]));
+  }
+  return randomUrl
+}
+
 module.exports = router;
