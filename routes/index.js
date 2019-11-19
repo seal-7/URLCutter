@@ -1,10 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var geoip = require('geoip-country');
+var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  let ipaddress = req.connection.remoteAddress
   res.render('index', { title: 'URL CUTTER' });
+  var geo = geoip.lookup("106.51.109.212");
+  console.log(geo.country, ipaddress);
+  logCountryCodeInFile(geo.country, ipaddress);
 });
+
 router.post('/create', function(req, res, next) {
     console.log(req.body.url);
     console.log(req.body.short_url);
@@ -60,6 +67,13 @@ function getRandomShortUrl() {
     randomUrl += String.fromCharCode('a'.charCodeAt(0) + parseInt(randomNumber[i]));
   }
   return randomUrl
+}
+
+function logCountryCodeInFile(countryCode, ipaddress) {
+  let log = countryCode + " | " + ipaddress + " | " + new Date().getTime() + "\n";
+  fs.appendFile('./country.logs', log, function(err) {
+    console.error(err, "Error logging in file.");
+  })
 }
 
 module.exports = router;
