@@ -27,7 +27,7 @@ router.post('/create', function(req, res, next) {
         }
         else{
             console.log("User created succesfully\n");
-            res.render('success',{link: "http://52.15.233.98:3000/" + db_data.short_url});
+            res.render('success',{link: "http://theurlcutter.in/" + db_data.short_url});
         }
 
     })
